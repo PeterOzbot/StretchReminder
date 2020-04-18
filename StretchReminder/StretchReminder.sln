@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StretchReminder", "StretchR
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "StretchReminder.Packaging", "..\StretchReminder.Packaging\StretchReminder.Packaging.wapproj", "{4ACFCDE6-73FC-46A8-BAE8-8D6BC4217F55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StretchReminder.Core", "..\StretchReminder.Core\StretchReminder.Core.csproj", "{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,26 @@ Global
 		{4ACFCDE6-73FC-46A8-BAE8-8D6BC4217F55}.Release|x86.ActiveCfg = Release|x86
 		{4ACFCDE6-73FC-46A8-BAE8-8D6BC4217F55}.Release|x86.Build.0 = Release|x86
 		{4ACFCDE6-73FC-46A8-BAE8-8D6BC4217F55}.Release|x86.Deploy.0 = Release|x86
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Debug|ARM.Build.0 = Debug|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Debug|x64.Build.0 = Debug|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Debug|x86.Build.0 = Debug|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Release|ARM.ActiveCfg = Release|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Release|ARM.Build.0 = Release|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Release|ARM64.Build.0 = Release|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Release|x64.ActiveCfg = Release|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Release|x64.Build.0 = Release|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Release|x86.ActiveCfg = Release|Any CPU
+		{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
