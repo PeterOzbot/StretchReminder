@@ -4,16 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StretchReminder"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        Closing="OnClose" StateChanged="OnStateChanged" IsVisibleChanged="OnIsVisibleChanged">
+        x:Name="MainWindowName"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
+        WindowState="{Binding TrayIconService.WindowState}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=TrayIconService.ClosingCommand}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="StateChanged">
+            <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=TrayIconService.StateChangedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        <Button Grid.Row="0" Click="Button_Click"></Button>
-        <Label Grid.Row="1" x:Name="Label"></Label>
+
+        <Button Grid.Row="0" Command="{Binding StartTimeCommand}"></Button>
+        <Label Grid.Row="1" x:Name="Label" Content="{Binding DurationFriendlyName}"
+               VerticalAlignment="Center" HorizontalAlignment="Center"
+               FontSize="50" ></Label>
     </Grid>
 </Window>

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StretchReminder.Core
+namespace StretchReminder.Core.Events
 {
-    public class Settings
+    public class HideEvent : BaseEvent
     {
-        
     }
 }

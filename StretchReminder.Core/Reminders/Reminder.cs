@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StretchReminder
+namespace StretchReminder.Core.Reminders
 {
-    public class MainViewModel
+    public class Reminder
     {
+        public string Message { get; set; }
     }
 }
