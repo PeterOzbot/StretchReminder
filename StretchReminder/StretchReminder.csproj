@@ -132,6 +132,14 @@
       <Project>{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}</Project>
       <Name>StretchReminder.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StretchReminder.Reminder\StretchReminder.Reminder.csproj">
+      <Project>{66288406-91C3-4B73-90F8-C75B110E14FF}</Project>
+      <Name>StretchReminder.Reminder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StretchReminder.TrayIcon\StretchReminder.TrayIcon.csproj">
+      <Project>{CFB8A025-0617-4E38-BF35-52E7A82CE346}</Project>
+      <Name>StretchReminder.TrayIcon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

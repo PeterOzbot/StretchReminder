@@ -8,27 +8,68 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Height="450" Width="800"
         x:Name="MainWindowName"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
-        WindowState="{Binding TrayIconService.WindowState}">
+        WindowState="{Binding TrayIconViewModel.WindowState}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closing">
-            <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=TrayIconService.ClosingCommand}" />
+            <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=TrayIconViewModel.ClosingCommand}" />
         </i:EventTrigger>
         <i:EventTrigger EventName="StateChanged">
-            <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=TrayIconService.StateChangedCommand}" />
+            <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=TrayIconViewModel.StateChangedCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
+    <Window.Resources>
+        <Style x:Key="TimeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="IsReadOnly" Value="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.ReminderViewModel.TimerDuration.Readonly}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="ColonTextBoxStyle" TargetType="TextBox" >
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="IsEnabled" Value="False"/>
+            <Setter Property="Text" Value=":"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <Button Grid.Row="0" Command="{Binding StartTimeCommand}"></Button>
-        <Label Grid.Row="1" x:Name="Label" Content="{Binding DurationFriendlyName}"
-               VerticalAlignment="Center" HorizontalAlignment="Center"
-               FontSize="50" ></Label>
+        <Button Grid.Row="0" Grid.Column="0"
+                Command="{Binding ReminderViewModel.StartCommand}">
+            Start
+        </Button>
+        <Button Grid.Row="0" Grid.Column="1"
+                Command="{Binding ReminderViewModel.StopCommand}">
+            Stop
+        </Button>
+
+        <!--Time-->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Style="{StaticResource TimeTextBoxStyle}" Text="{Binding ReminderViewModel.TimerDuration.Hours}"/>
+            <TextBox Grid.Column="1" Style="{StaticResource ColonTextBoxStyle}"/>
+            <TextBox Grid.Column="2" Style="{StaticResource TimeTextBoxStyle}" Text="{Binding ReminderViewModel.TimerDuration.Minutes}"/>
+            <TextBox Grid.Column="3" Style="{StaticResource ColonTextBoxStyle}"/>
+            <TextBox Grid.Column="4" Style="{StaticResource TimeTextBoxStyle}" Text="{Binding ReminderViewModel.TimerDuration.Seconds}"/>
+        </Grid>
     </Grid>
 </Window>

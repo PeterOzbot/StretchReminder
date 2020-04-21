@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E6F2A598-A9D0-4BC4-B653-1CC8C587F54C}</ProjectGuid>
+    <ProjectGuid>{CFB8A025-0617-4E38-BF35-52E7A82CE346}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StretchReminder.Core</RootNamespace>
-    <AssemblyName>StretchReminder.Core</AssemblyName>
+    <RootNamespace>StretchReminder.TrayIcon</RootNamespace>
+    <AssemblyName>StretchReminder.TrayIcon</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -45,7 +45,6 @@
     </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -61,17 +60,21 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\ConfigurationService.cs" />
-    <Compile Include="Configuration\IConfigurationService.cs" />
-    <Compile Include="Events\BaseEvent.cs" />
-    <Compile Include="Events\EventAggregator.cs" />
-    <Compile Include="Events\HideEvent.cs" />
-    <Compile Include="Events\IEventAggregator.cs" />
-    <Compile Include="Events\ShowEvent.cs" />
+    <Compile Include="Implementation\IconInfo.cs" />
+    <Compile Include="Core\IIconInfo.cs" />
+    <Compile Include="Core\ITrayIconService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Implementation\TrayIconService.cs" />
+    <Compile Include="Implementation\TrayIconViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StretchReminder.Core\StretchReminder.Core.csproj">
+      <Project>{e6f2a598-a9d0-4bc4-b653-1cc8c587f54c}</Project>
+      <Name>StretchReminder.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

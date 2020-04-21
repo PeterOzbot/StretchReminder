@@ -13,13 +13,14 @@
 */
 
 using CommonServiceLocator;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-using StretchReminder.Core;
 using StretchReminder.Core.Configuration;
 using StretchReminder.Core.Events;
-using StretchReminder.Core.Reminders;
-using StretchReminder.Core.TrayIcon;
+using StretchReminder.Reminder.Notifications;
+using StretchReminder.Reminder.Timers;
+using StretchReminder.Reminder.ViewModels;
+using StretchReminder.TrayIcon.Core;
+using StretchReminder.TrayIcon.Implementation;
 
 namespace StretchReminder.ViewModel
 {
@@ -47,7 +48,7 @@ namespace StretchReminder.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<MainViewModel>();
+            RegisterViewModels();
             RegisterServices();
         }
 
@@ -64,12 +65,20 @@ namespace StretchReminder.ViewModel
             // TODO Clear the ViewModels
         }
 
+        private void RegisterViewModels()
+        {
+            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<TrayIconViewModel>();
+            SimpleIoc.Default.Register<ReminderViewModel>();
+        }
+
         private void RegisterServices()
         {
             SimpleIoc.Default.Register<ITrayIconService, TrayIconService>();
             SimpleIoc.Default.Register<IEventAggregator, EventAggregator>();
             SimpleIoc.Default.Register<IConfigurationService, ConfigurationService>();
-            SimpleIoc.Default.Register<IReminderService, ReminderService>();
+            SimpleIoc.Default.Register<INotificationService, NotificationService>();
+            SimpleIoc.Default.Register<ITimerService, TimerService>();
         }
     }
 }

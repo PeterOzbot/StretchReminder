@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 
-namespace StretchReminder.Core.Reminders
+namespace StretchReminder.Reminder.Notifications
 {
     /// <summary>
     /// Concrete implementation of <see cref="IReminderService"/>
     /// </summary>
-    public class ReminderService : IReminderService
+    public class NotificationService : INotificationService
     {
-        public void ShowReminder(Reminder reminder)
+        public void Show(Notification reminder)
         {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml($@"<toast>
