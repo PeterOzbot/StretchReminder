@@ -1,13 +1,9 @@
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
 using StretchReminder.Reminder.Timers;
-using StretchReminder.Reminder.ViewModels;
+using StretchReminder.Reminder.Ui.ViewModels;
 using StretchReminder.TrayIcon.Implementation;
-using System;
-using System.ComponentModel;
-using System.Windows.Input;
 
-namespace StretchReminder.ViewModel
+namespace StretchReminder.Ui.ViewModel
 {
     /// <summary>
     /// This class contains properties that the main View can data bind to.

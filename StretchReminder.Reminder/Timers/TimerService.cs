@@ -1,8 +1,5 @@
 ﻿using StretchReminder.Reminder.Notifications;
 using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
 
 namespace StretchReminder.Reminder.Timers
 {
@@ -23,19 +20,26 @@ namespace StretchReminder.Reminder.Timers
 
         public TimerDuration Start(TimeSpan duration)
         {
+            // set new duration
+            _timerDuration = new TimerDuration { Duration = duration, Readonly = true };
+
+            // start the timer
+            Start(_timerDuration);
+
+            // return the duration
+            return _timerDuration;
+        }
+
+        private void Start(TimerDuration timerDuration)
+        {
             if (_dispatcherTimer == null)
             {
-                // set new duration
-                _timerDuration = new TimerDuration { Duration = duration, Readonly = true };
-
                 // create new dispatcher and start it
                 _dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
                 _dispatcherTimer.Tick += DispatcherTimer_Tick;
                 _dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
                 _dispatcherTimer.Start();
             }
-
-            return _timerDuration;
         }
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
@@ -49,14 +53,24 @@ namespace StretchReminder.Reminder.Timers
                 // stop the timer
                 Stop();
 
-                // unlock the timer duration
-                _timerDuration.Readonly = false;
-
                 // show notification
-                _notificationService.Show(new Notification
+                _notificationService.Show(new DefaultNotification
                 {
-                    Message = "Stretch lazy boy."
+                    Message = "Stretch lazy boy.",
+                    OnSnooze = Snooze
                 });
+            }
+        }
+
+        private void Snooze(TimeSpan duration)
+        {
+            if (_timerDuration != null)
+            {
+                // set the new duration
+                _timerDuration.Duration = duration;
+
+                // start the timer with new duration
+                Start(_timerDuration);
             }
         }
 
@@ -67,6 +81,12 @@ namespace StretchReminder.Reminder.Timers
                 _dispatcherTimer.Stop();
                 _dispatcherTimer.Tick -= DispatcherTimer_Tick;
                 _dispatcherTimer = null;
+            }
+
+            // unlock the timer duration
+            if (_timerDuration != null)
+            {
+                _timerDuration.Readonly = false;
             }
         }
     }

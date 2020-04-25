@@ -18,11 +18,11 @@ using StretchReminder.Core.Configuration;
 using StretchReminder.Core.Events;
 using StretchReminder.Reminder.Notifications;
 using StretchReminder.Reminder.Timers;
-using StretchReminder.Reminder.ViewModels;
+using StretchReminder.Reminder.Ui.ViewModels;
 using StretchReminder.TrayIcon.Core;
 using StretchReminder.TrayIcon.Implementation;
 
-namespace StretchReminder.ViewModel
+namespace StretchReminder.Ui.ViewModel
 {
     /// <summary>
     /// This class contains static references to all the view models in the
@@ -57,6 +57,13 @@ namespace StretchReminder.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
+            }
+        }
+        public ReminderViewModel Reminder
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ReminderViewModel>();
             }
         }
 

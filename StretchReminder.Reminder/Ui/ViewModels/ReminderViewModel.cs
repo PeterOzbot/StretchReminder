@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace StretchReminder.Reminder.ViewModels
+namespace StretchReminder.Reminder.Ui.ViewModels
 {
     public class ReminderViewModel : ViewModelBase
     {
@@ -61,7 +61,7 @@ namespace StretchReminder.Reminder.ViewModels
 
         private bool CanStart()
         {
-            return TimerDuration.Hours != 0 || TimerDuration.Minutes != 0 || TimerDuration.Seconds != 0;
+            return !TimerDuration.Readonly && (TimerDuration.Hours != 0 || TimerDuration.Minutes != 0 || TimerDuration.Seconds != 0);
         }
 
         private void Stop()

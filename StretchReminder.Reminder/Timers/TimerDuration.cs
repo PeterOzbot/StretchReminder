@@ -59,6 +59,12 @@ namespace StretchReminder.Reminder.Timers
             set;
         }
 
+
+        public TimerDuration()
+        {
+            Duration = new TimeSpan(0, 0, 1);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void RaisePropertyChanged([CallerMemberName] string name = null)
         {

@@ -9,6 +9,6 @@
         /// Shows the notification.
         /// </summary>
         /// <param name="reminder"></param>
-        void Show(Notification notification);
+        void Show(INotification notification);
     }
 }
